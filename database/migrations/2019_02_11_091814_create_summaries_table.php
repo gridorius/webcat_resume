@@ -15,6 +15,9 @@ class CreateSummariesTable extends Migration
     {
         Schema::create('summaries', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
+            $table->string('position');
+            $table->string('resume_file');
             $table->timestamps();
         });
     }
