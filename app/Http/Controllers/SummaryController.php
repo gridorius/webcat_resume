@@ -33,6 +33,30 @@ class SummaryController extends Controller
       return redirect()->route('summaries');
     }
 
+    public function update(Request $r){
+      $this->validate($r, [
+        'id' => 'required'
+      ]);
+
+      $summary = Summary::find($r->id);
+
+      if(!empty($r->position))
+      $summary->position = $r->position;
+
+      if(!empty($r->resume))
+        $summary->resume = $r->resume->store('resume_files');
+
+      $summary->save();
+
+      return redirect()->route('summaries');
+    }
+
+    public function edit($id){
+      if(Auth::id() != Summary::find($id)->user_id)
+        return back();
+      return view('editsummary', ['summary' => Summary::find($id)]);
+    }
+
     public function delete($id){
       $summary = Summary::find($id);
       if(Auth::user()->id == $summary->user_id)

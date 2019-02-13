@@ -21,5 +21,7 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/summaries', 'SummaryController@index')->name('summaries');
 Route::get('/summaries/new', 'SummaryController@new');
+Route::get('/summaries/edit/{id}', 'SummaryController@edit');
+Route::patch('/summaries', 'SummaryController@update');
 Route::post('/summaries', 'SummaryController@create');
 Route::delete('/summaries/{id}', 'SummaryController@delete');

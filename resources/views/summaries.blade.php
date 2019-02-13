@@ -7,7 +7,9 @@
     <ul class="summary-list">
       @foreach($summaries as $summary)
         <li>{{$summary->position}} {{date('Y.m.d', strtotime($summary->created_at))}}<br>
-          <button class="edit">Редактировать</button>
+          <form action="/summaries/edit/{{$summary->id}}" method="get">
+            <button class="edit">Редактировать</button>
+          </form>
           <form action="/summaries/{{$summary->id}}" method="post">
             @csrf
             {{ method_field('DELETE') }}
