@@ -13,7 +13,7 @@
   <nav>
     <ul class="nav-menu">
       <li class="logo">
-          <a href="#">Logo</a>
+          <a href="/">Logo</a>
       </li>
       <li class="search">
         <form action="#" method="post">

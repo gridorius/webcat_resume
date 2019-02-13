@@ -18,4 +18,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index');
 
 Route::get('/logout', 'Auth\LoginController@logout');
+
 Route::get('/summaries', 'SummaryController@index')->name('summaries');
+Route::get('/summaries/new', 'SummaryController@new');
+Route::post('/summaries', 'SummaryController@create');
+Route::delete('/summaries/{id}', 'SummaryController@delete');

@@ -98,7 +98,8 @@ nav > ul.nav-menu{
   z-index: -1;
 }
 
-.auth-form input{
+.auth-form input,
+.form-input{
   background: transparent;
   border: 0;
   border-bottom: 2px solid #6f7fea;
@@ -112,7 +113,8 @@ nav > ul.nav-menu{
   font-weight: 500;
 }
 
-.auth-form button{
+.auth-form button,
+.form-button{
   border: 0;
   border-radius: 20px;
   margin-top: 20px;
@@ -153,4 +155,20 @@ nav > ul.nav-menu{
 .summary-list .delete{
   color: white;
   background: rgba(255, 0, 0, .7);
+}
+
+.link-button{
+  border: 0;
+  border-radius: 30px;
+  background: transparent;
+  box-sizing: border-box;
+  font-weight: 600;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, .1);
+  text-decoration: none;
+}
+
+.link-button.blue{
+  padding: 5px 10px;
+  background: #6f7fea;
+  color: white;
 }
