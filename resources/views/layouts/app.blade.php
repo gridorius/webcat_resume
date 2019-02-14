@@ -16,8 +16,9 @@
           <a href="/">Logo</a>
       </li>
       <li class="search">
-        <form action="#" method="post">
-          <input type="text" name="search" placeholder="найти...">
+        <form action="/search" method="post">
+          @csrf
+          <input type="text" name="text" placeholder="найти...">
           <input type="submit" value="найти">
         </form>
       </li>
@@ -34,7 +35,7 @@
         </li>
       @else
         <li>
-          Компании
+          <a href="/companies">Компании</a>
         </li>
         <li class="user-menu">
             {{ Auth::user()->name }}
@@ -44,6 +45,9 @@
               </li>
               <li>
                 <a href="{{route('summaries')}}">Мои резюме</a>
+              </li>
+              <li>
+                <a href="{{route('summaries')}}">Мои компании</a>
               </li>
               <li>
                 <a href="{{route('logout')}}">Выйти</a>

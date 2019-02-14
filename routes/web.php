@@ -32,3 +32,5 @@ Route::delete('/summaries/{id}', 'SummaryController@delete');
 
 Route::get('/companies', 'CompanyController@index');
 Route::get('/companies/{company}', 'CompanyController@get');
+
+Route::post('/search', 'SearchController@find');

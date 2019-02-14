@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="content">
-  <ul class="company-list">
-    <h1>Компании</h1>
+  <div class="content">
+    <h1>Результаты поиска</h1>
     @foreach($companies as $company)
       <li>
         <a class="company-name" href="/companies/{{$company->id}}">
@@ -14,6 +13,5 @@
         </div>
       </li>
     @endforeach
-  </ul>
-</div>
+  </div>
 @endsection
