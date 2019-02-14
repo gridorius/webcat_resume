@@ -10,7 +10,7 @@ class SummaryResponse extends Model
       return $this->belongsTo('App\Company');
     }
 
-    public function resume(){
-      return $this->hasOne('App\Resume');
+    public function summary(){
+      return $this->belongsTo('App\Summary');
     }
 }

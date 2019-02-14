@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Validator;
 use App\User;
 use App\Summary;
@@ -85,5 +86,31 @@ class SummaryController extends Controller
       $summaryResponse->save();
 
       return redirect()->action('SummaryController@index');
+    }
+    
+    public function getFile(Summary $summary){
+        return response()->download(storage_path('app').'/'.$summary->resume_file);
+    }
+    
+    public function statistics(){
+        $summaries = Summary::select('summaries.id', 'position')
+            ->where('user_id', Auth::id())
+            ->join('summary_responses', 'summary_responses.summary_id', 'summaries.id')
+            ->groupBy('id', 'position')
+            ->where('summary_responses.response', 1)
+            ->orderBy(DB::raw('count(response)'), 'desc')
+            ->get();
+        
+        $byDate = [0, 0, 0, 0, 0, 0, 0, 0];
+        
+         $srs = SummaryResponse::select('summary_responses.created_at')
+            ->where('response', 1)
+            ->join('summaries', 'summaries.id', 'summary_responses.summary_id')
+            ->get();
+        
+        foreach($srs as $sr)
+            $byDate[date('N', strtotime($sr->created_at))] += 1;
+
+        return view('statistics', ['summaries' => $summaries, 'byDate' => $byDate]);
     }
 }

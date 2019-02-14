@@ -61,4 +61,12 @@ class CompanyController extends Controller
         
         return redirect()->action('CompanyController@get', ['company' => $company]);
     }
+    
+    public function delete(Company $company){
+        if($company->user_id != Auth::id())
+            return back();
+        
+        $company->delete();
+        return redirect()->action('CompanyController@myList');
+    }
 }
