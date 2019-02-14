@@ -12,6 +12,10 @@ use Illuminate\Http\Request;
 
 class SummaryController extends Controller
 {
+    public function summary(Summary $summary){
+      return view('summary', ['summary' => $summary]);
+    }
+
     public function index(){
       return view('summaries', ['summaries' => Auth::user()->summaries]);
     }
@@ -42,10 +46,10 @@ class SummaryController extends Controller
 
       $summary = Summary::find($r->id);
 
-      if(!empty($r->position))
+      if($r->has('position'))
       $summary->position = $r->position;
 
-      if(!empty($r->resume))
+      if($r->has('resume'))
         $summary->resume_file = $r->resume->store('resume_files');
 
       $summary->save();
@@ -63,7 +67,7 @@ class SummaryController extends Controller
       $summary = Summary::find($id);
       if(Auth::user()->id == $summary->user_id)
         $summary->delete();
-      return back();
+      return redirect()->action('SummaryController@index');
     }
 
     public function sendGetForm(Company $company){
@@ -73,13 +77,13 @@ class SummaryController extends Controller
     public function send(Summary $summary, $company_id){
       if($summary->user_id != Auth::id())
         return back();
-      
+
 
       $summaryResponse = new SummaryResponse();
       $summaryResponse->company_id = $company_id;
       $summaryResponse->summary_id = $summary->id;
       $summaryResponse->save();
 
-      return back();
+      return redirect()->action('SummaryController@index');
     }
 }

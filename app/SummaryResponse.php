@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class SummaryResponse extends Model
 {
     public function company(){
-      return $this->hasOne('App\Company');
+      return $this->belongsTo('App\Company');
     }
 
     public function resume(){
