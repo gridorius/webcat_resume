@@ -16,8 +16,8 @@ class CreateSummaryResponsesTable extends Migration
         Schema::create('summary_responses', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('company_id');
-            $table->integer('resume_id');
-            $table->boolean('response');
+            $table->integer('summary_id');
+            $table->boolean('response')->nullable();
             $table->timestamps();
         });
     }

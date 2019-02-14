@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Validator;
 use App\User;
 use App\Summary;
+use App\Company;
+use App\SummaryResponse;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -44,7 +46,7 @@ class SummaryController extends Controller
       $summary->position = $r->position;
 
       if(!empty($r->resume))
-        $summary->resume = $r->resume->store('resume_files');
+        $summary->resume_file = $r->resume->store('resume_files');
 
       $summary->save();
 
@@ -61,6 +63,23 @@ class SummaryController extends Controller
       $summary = Summary::find($id);
       if(Auth::user()->id == $summary->user_id)
         $summary->delete();
+      return back();
+    }
+
+    public function sendGetForm(Company $company){
+      return view('summariessend', ['summaries' => Auth::user()->summaries, 'company' => $company]);
+    }
+
+    public function send(Summary $summary, $company_id){
+      if($summary->user_id != Auth::id())
+        return back();
+      
+
+      $summaryResponse = new SummaryResponse();
+      $summaryResponse->company_id = $company_id;
+      $summaryResponse->summary_id = $summary->id;
+      $summaryResponse->save();
+
       return back();
     }
 }

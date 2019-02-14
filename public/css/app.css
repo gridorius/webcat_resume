@@ -172,3 +172,39 @@ nav > ul.nav-menu{
   background: #6f7fea;
   color: white;
 }
+
+.link-button.transparent{
+  border: 2px solid black;
+  padding: 5px 10px;
+  background: transparent;
+  color: black;
+}
+
+.link-button.mini{
+  font-size: 12px;
+}
+
+.company-list{
+  list-style: none;
+}
+
+.company-list li{
+  padding: 10px 0;
+}
+
+.company-name{
+  font-size:18px;
+}
+
+.company-description{
+  max-width: 400px;
+  line-height: 30px;
+}
+
+.company-min-description{
+  padding: 10px 0;
+  white-space: nowrap;
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
