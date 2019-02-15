@@ -160,11 +160,13 @@ nav > ul.nav-menu{
 .link-button{
   border: 0;
   border-radius: 30px;
+  padding: 5px 10px;
   background: transparent;
   box-sizing: border-box;
   font-weight: 600;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, .1);
   text-decoration: none;
+
 }
 
 .link-button.blue{
@@ -175,9 +177,14 @@ nav > ul.nav-menu{
 
 .link-button.transparent{
   border: 2px solid black;
-  padding: 5px 10px;
+
   background: transparent;
   color: black;
+}
+
+.link-button.red{
+  background: rgba(255, 0, 0, .7);
+  color:white;
 }
 
 .link-button.mini{
@@ -196,7 +203,7 @@ nav > ul.nav-menu{
   font-size:18px;
 }
 
-.company-description{
+.description{
   max-width: 400px;
   line-height: 30px;
 }
@@ -207,4 +214,23 @@ nav > ul.nav-menu{
   max-width: 250px;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+ul.description{
+    list-style: none;
+    padding: 0;
+}
+
+.summary-responses-list td{
+    padding: 10px;
+}
+
+.search-button {
+    border: 0px;
+    width:30px;
+    height:30px;
+    background: url(../icons/40.ico);
+    background-size: 30px;
+    filter: invert(100);
+    cursor: pointer;
 }

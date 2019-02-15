@@ -106,6 +106,7 @@ class SummaryController extends Controller
          $srs = SummaryResponse::select('summary_responses.created_at')
             ->where('response', 1)
             ->join('summaries', 'summaries.id', 'summary_responses.summary_id')
+            ->where('user_id', Auth::id())
             ->get();
         
         foreach($srs as $sr)

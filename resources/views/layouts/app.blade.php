@@ -19,7 +19,7 @@
         <form action="/search" method="post">
           @csrf
           <input type="text" name="text" placeholder="найти...">
-          <input type="submit" value="найти">
+          <input class="search-button" type='submit' value="">
         </form>
       </li>
     </ul>
@@ -41,13 +41,13 @@
             {{ Auth::user()->name }}
             <ul class="drop-down">
               <li>
-                <a href="#">Профиль</a>
-              </li>
-              <li>
                 <a href="{{route('summaries')}}">Мои резюме</a>
               </li>
               <li>
-                <a href="{{route('summaries')}}">Мои компании</a>
+                <a href="/companies/my">Мои компании</a>
+              </li>
+              <li>
+                <a href="/statistics">Статистика</a>
               </li>
               <li>
                 <a href="{{route('logout')}}">Выйти</a>

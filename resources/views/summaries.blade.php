@@ -6,15 +6,11 @@
     <a class="link-button blue" href="/summaries/new">Создать резюме</a>
     <ul class="summary-list">
       @foreach($summaries as $summary)
-        <li>{{$summary->position}} {{date('Y.m.d', strtotime($summary->created_at))}}<br>
-          <form action="/summaries/edit/{{$summary->id}}" method="get">
-            <button class="edit">Редактировать</button>
-          </form>
-          <form action="/summaries/{{$summary->id}}" method="post">
-            @csrf
-            {{ method_field('DELETE') }}
-            <button class="delete">Удалить</button>
-          </form>
+        <li>
+          <a href="/summaries/{{$summary->id}}">
+            {{$summary->position}}
+          </a>
+           {{date('Y.m.d', strtotime($summary->created_at))}}<br>
         </li>
       @endforeach
     </ul>
