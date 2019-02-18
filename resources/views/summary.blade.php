@@ -15,20 +15,22 @@
     <a href="/summaries/file/{{$summary->id}}">Файл с резюме</a>
     @if($summary->user_id == Auth::id())
     <h2>Оценки резюме</h2>
-    <table class='summary-responses-list'>
-        <tr>
-            <th>Компания</th>
-            <th>Оценка</th>
-            <th>Дата отправки</th>
-        </tr>
-        @foreach($summary->responses as $response)
-        <tr>
-            <td>{{$response->company->name}}</td>
-            <td>{{$response->response == null? '---' : ( $response->response ? 'Положительная' : 'Отрицательная' )}}</td>
-            <td>{{$response->created_at}}</td>
-        </tr>
-        @endforeach
-    </table>
+    <div class="table-container">
+        <table class='summary-responses-list'>
+            <tr>
+                <th>Компания</th>
+                <th>Оценка</th>
+                <th>Дата отправки</th>
+            </tr>
+            @foreach($summary->responses as $response)
+            <tr>
+                <td>{{$response->company->name}}</td>
+                <td>{{$response->response == null? '---' : ( $response->response ? 'Положительная' : 'Отрицательная' )}}</td>
+                <td>{{$response->created_at}}</td>
+            </tr>
+            @endforeach
+        </table>
+    </div>
     @endif
 </div>
 @endsection

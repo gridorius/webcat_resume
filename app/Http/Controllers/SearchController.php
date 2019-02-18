@@ -42,6 +42,6 @@ class SearchController extends Controller
         
         
         
-      return view('found', ['companies' => $companies, 'summaries' => $summaries_filtered]);
+      return view('found', ['companies' => $companies, 'summaries' => collect($summaries_filtered)]);
     }
 }
