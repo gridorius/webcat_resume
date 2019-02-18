@@ -6,11 +6,11 @@ window.addEventListener('DOMContentLoaded', e => {
 
     searchButton.addEventListener('click', function (e) {
         let searchClassList = this.parentNode.text.classList;
-        
-        if (!searchClassList.contains('open')) {
-            e.preventDefault();
-            searchClassList.add('open');
-        }
+
+        e.preventDefault();
+        searchClassList.add('open');
+    }, {
+        once: true
     });
 
     burger.addEventListener('click', function (e) {
@@ -18,8 +18,8 @@ window.addEventListener('DOMContentLoaded', e => {
         this.classList.toggle('active');
         menu.classList.toggle('open');
     });
-    
-    window.addEventListener('click', e=>{
+
+    window.addEventListener('click', e => {
         burger.classList.remove('active');
         menu.classList.remove('open');
     })
