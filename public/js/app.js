@@ -6,6 +6,7 @@ window.addEventListener('DOMContentLoaded', e => {
 
     searchButton.addEventListener('click', function (e) {
         let searchClassList = this.parentNode.text.classList;
+        
         if (!searchClassList.contains('open')) {
             e.preventDefault();
             searchClassList.add('open');
@@ -13,7 +14,13 @@ window.addEventListener('DOMContentLoaded', e => {
     });
 
     burger.addEventListener('click', function (e) {
+        e.stopImmediatePropagation();
         this.classList.toggle('active');
         menu.classList.toggle('open');
     });
+    
+    window.addEventListener('click', e=>{
+        burger.classList.remove('active');
+        menu.classList.remove('open');
+    })
 });
