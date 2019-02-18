@@ -46,6 +46,9 @@ class SummaryController extends Controller
       ]);
 
       $summary = Summary::find($r->id);
+        
+      if($summary->user_id != Auth::id())
+        return back();
 
       if($r->has('position'))
       $summary->position = $r->position;
@@ -61,13 +64,16 @@ class SummaryController extends Controller
     public function edit($id){
       if(Auth::id() != Summary::find($id)->user_id)
         return back();
+        
       return view('editsummary', ['summary' => Summary::find($id)]);
     }
 
     public function delete($id){
       $summary = Summary::find($id);
+        
       if(Auth::user()->id == $summary->user_id)
         $summary->delete();
+        
       return redirect()->action('SummaryController@index');
     }
 
